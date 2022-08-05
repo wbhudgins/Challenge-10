@@ -1,0 +1,37 @@
+class Example {
+    constructor() {
+        this.name = this.getName();
+        this.id = this.getID()
+    }
+
+    async getName() {
+        const answer = await inquirer
+            .prompt({
+                message: "Enter Employee Name...",
+                type: "input",
+                name: "employeeName",
+            });
+        return answer.employeeName;
+    }
+
+    async getID() {
+        const answer = await inquirer
+            .prompt({
+                message: "Enter Employee ID...",
+                type: "input",
+                name: "employeeId",
+            });
+        return answer.employeeId;
+    }
+}
+
+(async () => {
+    const testExample = new Example();
+    const name = await testExample.name
+    const id = await testExample.id;
+    console.log(name);
+    console.log(id)
+
+    // fs.writeFile('test.txt', id, (err) =>
+    // err ? console.log(err) : console.log('Successfully created README.md file!'))
+})()
